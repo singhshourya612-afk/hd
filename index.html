@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Made With Time</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --cream:#faf7f2;
+    --blush:#f6e9e7;
+    --beige:#f1ebe3;
+    --lavender:#eceaf4;
+    --text:#2b2b2b;
+    --soft:#6b6b6b;
+    --glow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,var(--cream),var(--blush));
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+h1,h2,h3{
+    font-family:'Playfair Display',serif;
+    letter-spacing:.5px;
+}
+
+section{
+    min-height:100vh;
+    padding:12vh 10vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+#intro{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,var(--cream),var(--lavender));
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+    transition:1.2s ease;
+}
+
+.intro-text{
+    font-size:clamp(1.8rem,3vw,2.6rem);
+    text-align:center;
+    max-width:700px;
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1.8s forwards .6s;
+}
+
+.enter-btn{
+    margin-top:40px;
+    padding:14px 34px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    box-shadow:var(--glow);
+    cursor:pointer;
+    font-size:1rem;
+    opacity:0;
+    animation:fadeUp 1.8s forwards 2.2s;
+    transition:.4s;
+}
+
+.enter-btn:hover{transform:scale(1.05);}
+
+.intro-hide{
+    opacity:0;
+    transform:scale(1.05);
+    pointer-events:none;
+}
+
+.container{max-width:900px;}
+
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1.2s ease;
+}
+
+.fade.visible{
+    opacity:1;
+    transform:none;
+}
+
+.effort{
+    background:rgba(255,255,255,0.45);
+    border-radius:30px;
+    padding:50px;
+    backdrop-filter:blur(8px);
+    box-shadow:var(--glow);
+}
+
+.choice{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+}
+
+button.soft{
+    border:none;
+    padding:14px 26px;
+    border-radius:30px;
+    background:white;
+    box-shadow:var(--glow);
+    cursor:pointer;
+    transition:.35s;
+}
+
+button.soft:hover{transform:scale(1.06);}
+
+.glow{box-shadow:0 0 40px rgba(255,170,170,.35);}
+
+.heart{
+    position:fixed;
+    font-size:20px;
+    animation:float 6s linear forwards;
+    pointer-events:none;
+}
+
+.cat{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:white;
+    padding:14px 18px;
+    border-radius:18px;
+    box-shadow:var(--glow);
+    font-size:.9rem;
+    opacity:0;
+    transform:translateY(20px);
+    transition:.6s;
+}
+
+.cat.show{
+    opacity:1;
+    transform:none;
+}
+
+.final{
+    text-align:center;
+    font-size:clamp(2rem,4vw,3rem);
+    line-height:1.4;
+}
+
+@keyframes fadeUp{
+    to{opacity:1;transform:none;}
+}
+
+@keyframes float{
+    from{transform:translateY(0);opacity:1;}
+    to{transform:translateY(-800px);opacity:0;}
+}
+
+@media(max-width:768px){
+section{padding:10vh 7vw;}
+.effort{padding:35px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+    <div class="intro-text">
+        Wait… don’t rush.<br>
+        This was made for you.
+    </div>
+
+    <button class="enter-btn" onclick="enterSite()">Enter</button>
+</div>
+
+<div class="cat" id="catBox">
+    You’ve been scrolling for 5 seconds.<br>
+    Take a smile break 🐾
+</div>
+
+<section>
+    <div class="container fade">
+        <h1>I didn’t want to send just a text…</h1>
+        <p style="margin-top:20px;color:var(--soft);font-size:1.05rem;">
+            so I made something you could feel.<br><br>
+            Not rushed. Not copied.<br>
+            Just built quietly — with intention.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container effort fade">
+        <h2>Worth the Effort</h2>
+
+        <p style="margin-top:25px;color:var(--soft);line-height:1.8;">
+            Some people deserve more than quick messages.<br><br>
+            You are one of them.<br><br>
+            So I built this… slowly, thoughtfully.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container fade">
+        <h2>Should I keep you forever?</h2>
+
+        <div class="choice">
+            <button class="soft" onclick="yes()">YES 🙂</button>
+            <button class="soft" onclick="no()">NO 🙃</button>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container fade">
+        <h2>One honest thing.</h2>
+
+        <p style="margin-top:20px;color:var(--soft);line-height:1.9;">
+            I’m not promising perfection.<br><br>
+            But I am promising presence, effort, and honesty.<br><br>
+            The kind that stays — even on ordinary days.
+        </p>
+    </div>
+</section>
+
+<section ondblclick="secret()">
+    <div class="container final fade">
+        Some things are built quickly.<br>
+        This wasn’t one of them.<br><br>
+
+        <span style="font-size:1.4rem;color:var(--soft);">
+            It was made with time.
+        </span>
+    </div>
+</section>
+
+<script>
+
+function enterSite(){
+    document.getElementById("intro").classList.add("intro-hide");
+}
+
+const faders=document.querySelectorAll('.fade');
+
+const appear=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+},{threshold:.2});
+
+faders.forEach(el=>appear.observe(el));
+
+function spawnHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="🤍";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*10+14)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),6000);
+}
+
+function yes(){
+    document.querySelectorAll('.soft')[0].classList.add('glow');
+    for(let i=0;i<18;i++){
+        setTimeout(spawnHeart,i*120);
+    }
+}
+
+function no(){
+    showCat("Incorrect answer detected. Please retry.");
+}
+
+let catShown=false;
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>300 && !catShown){
+catShown=true;
+setTimeout(()=>showCat(),800);
+}
+});
+
+function showCat(text){
+const cat=document.getElementById("catBox");
+if(text) cat.innerHTML=text;
+cat.classList.add("show");
+
+setTimeout(()=>{
+cat.classList.remove("show");
+},5000);
+}
+
+let idleTimer;
+
+function resetIdle(){
+clearTimeout(idleTimer);
+idleTimer=setTimeout(()=>{
+showCat("Still here? So loyal. I like you already.");
+},15000);
+}
+
+window.onload=resetIdle;
+document.onmousemove=resetIdle;
+document.onkeypress=resetIdle;
+
+function secret(){
+alert("Hidden note:\n\nIf you found this… it means you notice the little things.\nAnd that matters more than you think.");
+}
+
+</script>
+
+</body>
+</html>
